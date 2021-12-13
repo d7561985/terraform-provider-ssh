@@ -1,6 +1,6 @@
 # ssh Terraform provider
 
-- Documentation: https://registry.terraform.io/providers/loafoe/ssh/latest/docs
+- Documentation: https://registry.terraform.io/providers/d7561985/ssh/latest/docs
 
 ## Overview
 
@@ -57,7 +57,7 @@ output for further use in Terraform.
 
 ## Issues
 
-- If you have an issue: report it on the [issue tracker](https://github.com/loafoe/terraform-provider-ssh/issues)
+- If you have an issue: report it on the [issue tracker](https://github.com/d7561985/terraform-provider-ssh/issues)
 
 ## LICENSE
 

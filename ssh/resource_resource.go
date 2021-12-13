@@ -35,6 +35,11 @@ func resourceResource() *schema.Resource {
 				Required: true,
 				ForceNew: true,
 			},
+			"port": {
+				Type:     schema.TypeString,
+				Optional: true,
+				Default:  "22",
+			},
 			"bastion_host": {
 				Type:     schema.TypeString,
 				Optional: true,
@@ -138,6 +143,7 @@ func resourceResourceUpdate(_ context.Context, d *schema.ResourceData, m interfa
 	privateKey := d.Get("private_key").(string)
 	hostPrivateKey := d.Get("host_private_key").(string)
 	host := d.Get("host").(string)
+	port := d.Get("port").(string)
 	commandsAfterFileChanges := d.Get("commands_after_file_changes").(bool)
 	agent := d.Get("agent").(bool)
 
@@ -154,7 +160,7 @@ func resourceResourceUpdate(_ context.Context, d *schema.ResourceData, m interfa
 	ssh := &easyssh.MakeConfig{
 		User:   hostUser,
 		Server: privateIP,
-		Port:   "22",
+		Port:   port,
 		Proxy:  http.ProxyFromEnvironment,
 		Bastion: easyssh.DefaultConfig{
 			User:   user,

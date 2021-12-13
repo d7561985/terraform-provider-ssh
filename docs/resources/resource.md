@@ -33,6 +33,7 @@ The following arguments are supported:
 
 * `host` - (Required) The IP address or DNS hostname of the target server
 * `user` - (Required) The username to use for provision activities using SSH
+* `port` - (Optional) A ssh port to the `host`
 * `host_user` - (Optional) A distinct username to use for provision activities when provided. When missing the provided `user` is used
 * `private_key` - (Optional) The SSH private key to use for provision activities. Recommend to use ssh-agent
 * `host_private_key` - (Optional) A distinct SSH private key to use for provision activities when provided. Recommend to use ssh-agent
@@ -40,6 +41,7 @@ The following arguments are supported:
 * `file` - (Optional) Block specifying content to be written to the container host after creation
 * `commands` - (Required, list(string)) List of commands to execute after creation of container host
 * `bastion_host` - (Optional) The bastion host to use.  When not set, this will be deduced from the container host location
+* `bastion_port` - (Optional) The bastion host port to use. 
 * `triggers` - (Optional, list(string)) An list of strings which when changes will trigger recreation of the resource triggering
   all create files and commands executions.
 * `commands_after_file_changes` - (Optional, bool) Re-run all commands after file changes. Default is `true`.
