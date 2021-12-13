@@ -39,6 +39,11 @@ func resourceResource() *schema.Resource {
 				Type:     schema.TypeString,
 				Optional: true,
 			},
+			"bastion_port": {
+				Type:     schema.TypeString,
+				Optional: true,
+				Default:  "22",
+			},
 			"user": {
 				Type:     schema.TypeString,
 				Optional: true,
@@ -127,6 +132,7 @@ func resourceResourceUpdate(_ context.Context, d *schema.ResourceData, m interfa
 	config := m.(*Config)
 
 	bastionHost := d.Get("bastion_host").(string)
+	bastionPort := d.Get("bastion_port").(string)
 	user := d.Get("user").(string)
 	hostUser := d.Get("host_user").(string)
 	privateKey := d.Get("private_key").(string)
@@ -153,7 +159,7 @@ func resourceResourceUpdate(_ context.Context, d *schema.ResourceData, m interfa
 		Bastion: easyssh.DefaultConfig{
 			User:   user,
 			Server: bastionHost,
-			Port:   "22",
+			Port:   bastionPort,
 		},
 	}
 	if hostPrivateKey != "" {
