@@ -41,7 +41,7 @@ The following arguments are supported:
 * `file` - (Optional) Block specifying content to be written to the container host after creation
 * `commands` - (Required, list(string)) List of commands to execute after creation of container host
 * `bastion_host` - (Optional) The bastion host to use.  When not set, this will be deduced from the container host location
-* `bastion_port` - (Optional) The bastion host port to use. 
+* `bastion_port` - (Optional) The bastion host port to use
 * `triggers` - (Optional, list(string)) An list of strings which when changes will trigger recreation of the resource triggering
   all create files and commands executions.
 * `commands_after_file_changes` - (Optional, bool) Re-run all commands after file changes. Default is `true`.
