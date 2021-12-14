@@ -27,7 +27,9 @@ terraform {
 ```hcl
 resource "ssh_resource" "example" {
   host         = "remote-server.test"
+  port         = "22"
   bastion_host = "jumpgate.remote-host.com"
+  pastion_port = "22"
   user         = "alpine"
   agent        = true
 

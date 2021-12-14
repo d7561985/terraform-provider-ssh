@@ -213,11 +213,13 @@ func resourceResourceCreate(_ context.Context, d *schema.ResourceData, m interfa
 	config := m.(*Config)
 
 	bastionHost := d.Get("bastion_host").(string)
+	bastionPort := d.Get("bastion_port").(string)
 	user := d.Get("user").(string)
 	hostUser := d.Get("host_user").(string)
 	privateKey := d.Get("private_key").(string)
 	hostPrivateKey := d.Get("host_private_key").(string)
 	host := d.Get("host").(string)
+	port := d.Get("port").(string)
 	agent := d.Get("agent").(bool)
 
 	if len(hostUser) == 0 {
@@ -251,12 +253,12 @@ func resourceResourceCreate(_ context.Context, d *schema.ResourceData, m interfa
 	ssh := &easyssh.MakeConfig{
 		User:   hostUser,
 		Server: privateIP,
-		Port:   "22",
+		Port:   port,
 		Proxy:  http.ProxyFromEnvironment,
 		Bastion: easyssh.DefaultConfig{
 			User:   user,
 			Server: bastionHost,
-			Port:   "22",
+			Port:   bastionPort,
 		},
 	}
 	if hostPrivateKey != "" {
